@@ -7,10 +7,10 @@ Allow Kook voice chat while OBS running
 
 ![image-20240525141645252](https://s2.loli.net/2024/05/25/ymq7H2fJtVLxgke.png)
 
-> Kook的产品经理您🐴在天上飞
+> 致Kook的产品经理: 喜报! 您🐴在天上飞!
 
 
 
 ### 使用方式
 
-将 Release 中的 `msimg32.dll` 放入Kook安装目录下即可
+将 Release 中的 `version.dll` 放入Kook安装目录下即可
