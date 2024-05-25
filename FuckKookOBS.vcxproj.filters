@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles/msimg32_DllMain.c" />
+    <ClCompile Include="GeneratedFiles/msimg32.c" />
+    <ClCompile Include="UserFiles/UserImplementations.cpp" />
+    <ClCompile Include="UserFiles\patcher.cpp">
+      <Filter>patcher</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="GeneratedFiles/msimg32_x64.asm" />
+    <MASM Include="GeneratedFiles/msimg32_x86.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="patcher">
+      <UniqueIdentifier>{6a35c9a0-f384-4a54-bbef-521c7464400a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserFiles\patcher.h">
+      <Filter>patcher</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

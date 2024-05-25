@@ -32,6 +32,10 @@
     <ClCompile Include="GeneratedFiles/msimg32_DllMain.c" />
     <ClCompile Include="GeneratedFiles/msimg32.c" />
     <ClCompile Include="UserFiles/UserImplementations.cpp" />
+    <ClCompile Include="UserFiles\patcher.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserFiles\patcher.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -88,6 +92,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>msimg32</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>msimg32</TargetName>
+    <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>

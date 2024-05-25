@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include <cassert>
 #include <tchar.h>
+#include "patcher.h"
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
@@ -30,7 +31,7 @@ extern "C"
     // apply use custom operation
     void __ExecuteUserCutomCodes()
     {
-        #pragma message(MESSAGE_RAISE_LOCATION "If you want to append custom code that is executed when the Dll is loaded, please add it here.")
+        doFuckKook();
     }
 
     int __CheckShouldExecuteAttachCode()
