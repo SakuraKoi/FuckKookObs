@@ -19,18 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="GeneratedFiles/msimg32_x64.asm">
+    <MASM Include="GeneratedFiles/version_x64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </MASM>
-    <MASM Include="GeneratedFiles/msimg32_x86.asm">
+    <MASM Include="GeneratedFiles/version_x86.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </MASM>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles/msimg32_DllMain.c" />
-    <ClCompile Include="GeneratedFiles/msimg32.c" />
+    <ClCompile Include="GeneratedFiles/version_DllMain.c" />
+    <ClCompile Include="GeneratedFiles/version.c" />
     <ClCompile Include="UserFiles/UserImplementations.cpp" />
     <ClCompile Include="UserFiles\patcher.cpp" />
   </ItemGroup>
@@ -41,7 +41,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{ff3b982e-2504-4209-b3ed-1cd49bcad2ba}</ProjectGuid>
-    <RootNamespace>msimg32</RootNamespace>
+    <RootNamespace>version</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -91,10 +91,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>msimg32</TargetName>
+    <TargetName>version</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>msimg32</TargetName>
+    <TargetName>version</TargetName>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">

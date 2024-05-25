@@ -33,4 +33,5 @@ void doFuckKook() {
     DetourUpdateThread(GetCurrentThread());
     DetourAttach(reinterpret_cast<PVOID*>(FuncNtQuerySystemInformation), HookNtQuerySystemInformation);
     DetourTransactionCommit();
+    MessageBox(NULL, L"Hook loaded", L"awa", 0);
 }
