@@ -36,3 +36,4 @@
 /x64/
 /FuckKookOBS/
 *.vcxproj.user
+/Release/
