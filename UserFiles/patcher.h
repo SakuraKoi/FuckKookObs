@@ -21,5 +21,5 @@ typedef struct _SYSTEM_PROCESS_INFO
 typedef NTSTATUS(_stdcall* _NtQuerySystemInformation)(
     SYSTEM_INFORMATION_CLASS SystemInformationClass,
     PVOID                    SystemInformation,
-    ULONG                    SystemInformationLength,
-    PULONG                   ReturnLength);
+    SIZE_T                    SystemInformationLength,
+    PSIZE_T                   ReturnLength);
