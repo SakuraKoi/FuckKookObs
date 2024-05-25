@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+/Debug/
+/.vs/
+/vcpkg_installed/
+/x64/
+/FuckKookOBS/
+*.vcxproj.user

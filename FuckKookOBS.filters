@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Utils/MemoryPatchConfig.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils/MiniTools.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles/msimg32.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles/msimg32_DllMain.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles/BuiltinImplementations.cpp">
+        <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="UserFiles/UserImplementations.cpp">
+        <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Utils/MemoryPatchConfig.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils/MiniTools.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources/resource.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="GeneratedFiles/msimg32_x64.asm">
+      <Filter>Assembly</Filter>
+    </MASM>
+    <MASM Include="GeneratedFiles/msimg32_x86.asm">
+      <Filter>Assembly</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{b221b4df-41e8-4902-97a7-2cfa7ed9cfda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{70cebc88-cb97-43dc-86fa-13b8805a6818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assembly">
+      <UniqueIdentifier>{09f3f0b9-c5c8-46c9-8a13-47208b6ad3df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{c5446f72-6df9-4b2c-9a19-6b55a6ed1a49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources/msimg32.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources/msimg32_patch.txt">
+      <Filter>Resource</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
