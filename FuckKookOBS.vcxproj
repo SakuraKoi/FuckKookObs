@@ -31,21 +31,7 @@
   <ItemGroup>
     <ClCompile Include="GeneratedFiles/msimg32_DllMain.c" />
     <ClCompile Include="GeneratedFiles/msimg32.c" />
-    <ClCompile Include="GeneratedFiles/BuiltinImplementations.cpp" />
-    <ClCompile Include="Utils/MemoryPatchConfig.cpp" />
-    <ClCompile Include="Utils/MiniTools.cpp" />
     <ClCompile Include="UserFiles/UserImplementations.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Resources/resource.h" />
-    <ClInclude Include="Utils/MemoryPatchConfig.h" />
-    <ClInclude Include="Utils/MiniTools.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Resources/msimg32.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Resources/msimg32_patch.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

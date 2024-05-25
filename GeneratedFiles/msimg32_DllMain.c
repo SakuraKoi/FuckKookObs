@@ -6,7 +6,6 @@
 #include <windows.h>
 
 extern void __CheckedLoad();
-extern void __ApplyBuiltinPatches();
 extern void __ExecuteUserCutomCodes();
 extern int __CheckShouldExecuteAttachCode();
 
@@ -24,9 +23,6 @@ BOOL WINAPI DllMain(
             // Initialize once for each new process.
             // Return FALSE to fail DLL load.
             __CheckedLoad();
-
-            // apply internal patches
-            __ApplyBuiltinPatches();
 
             // apply user custom codes
             __ExecuteUserCutomCodes();
