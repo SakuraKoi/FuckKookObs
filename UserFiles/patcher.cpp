@@ -1,7 +1,22 @@
 ﻿#include "patcher.h"
+#include <string>
 #include <detours/detours.h>
 
 static _NtQuerySystemInformation FuncNtQuerySystemInformation;
+
+const std::wstring BLACKLISTED_PROCESSES[] = {
+    L"obs64.exe", // OBS
+    L"livehime.exe" // B站直播姬
+};
+
+bool checkProcessName(const PWSTR processName) {
+    for (const auto& name : BLACKLISTED_PROCESSES) {
+        if (lstrcmpW(processName, name.c_str()) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
 
 NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemInformationClass, PVOID SystemInformation, SIZE_T SystemInformationLength, PSIZE_T ReturnLength) {
     const NTSTATUS Result = FuncNtQuerySystemInformation(SystemInformationClass, SystemInformation, SystemInformationLength, ReturnLength);
@@ -13,7 +28,8 @@ NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemIn
 
         do {
             NextEntryOffset = pNextSystemProcess->NextEntryOffset;
-            if (lstrcmpW((&pNextSystemProcess->ImageName)->Buffer, L"obs64.exe") == 0) {
+
+            if (checkProcessName(pNextSystemProcess->ImageName.Buffer)) {
                 pSystemProcess->NextEntryOffset += pNextSystemProcess->NextEntryOffset;
             }
             pSystemProcess = pNextSystemProcess;
@@ -29,8 +45,7 @@ void doFuckKook() {
     Sleep(1000);
 
     const HMODULE hNtdll = GetModuleHandle(L"ntdll.dll");
-    FuncNtQuerySystemInformation = reinterpret_cast<_NtQuerySystemInformation>(GetProcAddress(
-        hNtdll, "NtQuerySystemInformation"));
+    FuncNtQuerySystemInformation = reinterpret_cast<_NtQuerySystemInformation>(GetProcAddress(hNtdll, "NtQuerySystemInformation"));
 
     DetourTransactionBegin();
     DetourUpdateThread(GetCurrentThread());
