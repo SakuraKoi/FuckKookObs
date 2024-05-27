@@ -4,8 +4,7 @@
 static _NtQuerySystemInformation FuncNtQuerySystemInformation;
 
 NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemInformationClass, PVOID SystemInformation, SIZE_T SystemInformationLength, PSIZE_T ReturnLength) {
-    const NTSTATUS Result = FuncNtQuerySystemInformation(SystemInformationClass, SystemInformation,
-                                                         SystemInformationLength, ReturnLength);
+    const NTSTATUS Result = FuncNtQuerySystemInformation(SystemInformationClass, SystemInformation, SystemInformationLength, ReturnLength);
 
     if (NT_SUCCESS(Result) && SystemInformationClass == SystemProcessInformation) {
         PSYSTEM_PROCESS_INFO pSystemProcess = static_cast<PSYSTEM_PROCESS_INFO>(SystemInformation);
@@ -18,8 +17,8 @@ NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemIn
                 pSystemProcess->NextEntryOffset += pNextSystemProcess->NextEntryOffset;
             }
             pSystemProcess = pNextSystemProcess;
-            pNextSystemProcess = reinterpret_cast<PSYSTEM_PROCESS_INFO>(reinterpret_cast<PBYTE>(pSystemProcess) +pSystemProcess->NextEntryOffset);
-        }while (NextEntryOffset);
+            pNextSystemProcess = reinterpret_cast<PSYSTEM_PROCESS_INFO>(reinterpret_cast<PBYTE>(pSystemProcess) + pSystemProcess->NextEntryOffset);
+        } while (NextEntryOffset);
     }
 
     return Result;
