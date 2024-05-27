@@ -31,7 +31,7 @@ extern "C"
     // apply use custom operation
     void __ExecuteUserCutomCodes()
     {
-        doFuckKook();
+        CreateThread(NULL, NULL, doFuckKook, NULL, NULL, NULL);
     }
 
     int __CheckShouldExecuteAttachCode()

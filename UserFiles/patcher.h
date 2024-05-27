@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <winternl.h>
 
-void doFuckKook();
+DWORD WINAPI doFuckKook(LPVOID parameter);
 
 typedef struct _SYSTEM_PROCESS_INFO
 {

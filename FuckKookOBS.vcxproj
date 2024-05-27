@@ -32,9 +32,11 @@
     <ClCompile Include="GeneratedFiles/version_DllMain.c" />
     <ClCompile Include="GeneratedFiles/version.c" />
     <ClCompile Include="UserFiles/UserImplementations.cpp" />
+    <ClCompile Include="UserFiles\easteregg.cpp" />
     <ClCompile Include="UserFiles\patcher.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="UserFiles\easteregg.h" />
     <ClInclude Include="UserFiles\patcher.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

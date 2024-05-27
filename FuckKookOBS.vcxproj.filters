@@ -7,6 +7,9 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles/version_DllMain.c" />
     <ClCompile Include="GeneratedFiles/version.c" />
+    <ClCompile Include="UserFiles\easteregg.cpp">
+      <Filter>patcher</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="GeneratedFiles/version_x64.asm" />
@@ -19,6 +22,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UserFiles\patcher.h">
+      <Filter>patcher</Filter>
+    </ClInclude>
+    <ClInclude Include="UserFiles\easteregg.h">
       <Filter>patcher</Filter>
     </ClInclude>
   </ItemGroup>

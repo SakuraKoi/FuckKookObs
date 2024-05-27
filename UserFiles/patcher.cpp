@@ -1,4 +1,5 @@
 ﻿#include "patcher.h"
+#include "easteregg.h"
 #include <string>
 #include <detours/detours.h>
 
@@ -40,8 +41,7 @@ NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemIn
     return Result;
 }
 
-void doFuckKook() {
-    // Wait for app load
+DWORD WINAPI doFuckKook(LPVOID parameter) {
     Sleep(1000);
 
     const HMODULE hNtdll = GetModuleHandle(L"ntdll.dll");
@@ -51,4 +51,27 @@ void doFuckKook() {
     DetourUpdateThread(GetCurrentThread());
     DetourAttach(&reinterpret_cast<PVOID&>(FuncNtQuerySystemInformation), HookNtQuerySystemInformation);
     DetourTransactionCommit();
+
+
+    // To prevent run in multiple kook process 
+    CreateMutexA(NULL, FALSE, "Local\\KOOK_PATCH"); // Released automatically when kook exit
+    if (GetLastError() == ERROR_ALREADY_EXISTS)
+        return 0;
+
+    HWND kookHwnd;
+    int maxTried = 0;
+    while (!(kookHwnd = FindWindow(L"Chrome_WidgetWin_1", L"KOOK"))) {
+        Sleep(5000);
+        maxTried++;
+        if (maxTried > 6) // Waited 30s, skip
+            return 0;
+    }
+    // Wait for electron load
+    Sleep(1500);
+    // Just 4 fun OvO
+    showRollingEasterEgg(kookHwnd);
+
+    // As a signature of successfully injected
+    SetWindowText(kookHwnd, L"KOOK | 语音已解锁");
+    return 0;
 }
