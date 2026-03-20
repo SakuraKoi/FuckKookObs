@@ -18,7 +18,10 @@ Allow Kook voice chat while `OBS` or `Bilibili LiveHime` running
 
 ### 故障排查
 1. 检查任务栏kook窗口是否出现 `已解锁` 字样
-2. 没有的话是没注入成功, kook三天两头换程序编译架构 可能出现补丁架构不兼容, v2.1和v3两个版本都试试 \
+2. 没有的话是没注入成功, Kook三天两头换程序编译架构 可能出现补丁架构不兼容, v2.1和v3两个版本都试试 \
    v2.1 `x86架构`: https://github.com/SakuraKoi/FuckKookObs/releases/download/v2-fix1/version.dll \
    v3 `amd64架构`: https://github.com/SakuraKoi/FuckKookObs/releases/download/v3/version.dll
 3. 显示 `已解锁` 但还是失效的话发issue
+> Q: 有没有可能整个同时兼容两个架构的补丁, 避免Kook更新换架构 补丁也要跟着换?\
+> A: 没有 技术上不可能\
+> &nbsp;&nbsp;&nbsp;&nbsp;正常人不会搞这种架构左右横跳换来换去的事情 显然Kook开发组里已经没有人类了
